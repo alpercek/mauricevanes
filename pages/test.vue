@@ -13,7 +13,7 @@
         <h2>name</h2>
         <p class="description">description</p>
         <p class="price">price</p>
-        <form action="/.netlify/functions/create-checkout" method="post">
+        <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post">
           <label for="quantity">Quantity</label>
           <input
             type="number"
@@ -51,24 +51,18 @@
     },
     head () {
       return {
-        title: this.$prismic.asText(this.page.data.title)
+        title: this.$prismic.asText(this.page.data.title),
+        script : 'https://js.stripe.com/v3'
       }
     },
     methods: {
-  },
-  mounted(){
-    let Stripescript = document.createElement('script')
-      Stripescript.setAttribute('src', 'https://js.stripe.com/v3/')
-      document.head.appendChild(Stripescript)
-
-      function format(amount, currency) {
+        format(amount, currency) {
         return new Intl.NumberFormat('en-US', {
           style: 'currency',
           currency,
         }).format((amount / 100).toFixed(2));
-      }
-
-      async function handleSubmit(event) {
+      },
+        async handleSubmit(event) {
         event.preventDefault();
         document
           .querySelectorAll('button')
@@ -99,9 +93,8 @@
             .forEach((button) => (button.disabled = false));
           console.error(error);
         }
-      }
-
-      async function loadProducts() {
+      },
+      async loadProducts() {
         if (!'content' in document.createElement('template')) {
           console.error('Your browser doesn’t support HTML template elements.');
           return;
@@ -130,14 +123,12 @@
           img.src = product.image;
           img.alt = product.name;
 
-          const form = container.querySelector('form');
-          form.addEventListener('submit', handleSubmit);
 
           products.appendChild(container);
         });
-      }
-
-      loadProducts();
+      },
+  },
+  mounted(){
     }
   }
   </script>
