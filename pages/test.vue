@@ -34,6 +34,7 @@
   <script>
   import { doc } from 'prettier'
   import { components } from '~/slices'
+  import { Stripe } from 'stripe'
   
   export default {
     async asyncData ({ $prismic, store }) {
@@ -43,48 +44,6 @@
         page
       }
     },
-    format(amount, currency) {
-        return new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency,
-        }).format((amount / 100).toFixed(2));
-      },
-
-      async loadProducts() {
-        if (!'content' in document.createElement('template')) {
-          console.error('Your browser doesn’t support HTML template elements.');
-          return;
-        }
-
-        const data = await fetch('/.netlify/functions/get-products')
-          .then((res) => res.json())
-          .catch((err) => console.error(err));
-
-        const products = document.querySelector('.products');
-        const template = document.querySelector('#product');
-
-        data.forEach((product) => {
-          const container = template.content.cloneNode(true);
-
-          container.querySelector('h2').innerText = product.name;
-          container.querySelector('.description').innerText =
-            product.description;
-          container.querySelector('.price').innerText = format(
-            product.amount,
-            product.currency
-          );
-          container.querySelector('[name=sku]').value = product.sku;
-
-          const img = container.querySelector('img');
-          img.src = product.image;
-          img.alt = product.name;
-
-          const form = container.querySelector('form');
-          form.addEventListener('submit', handleSubmit);
-
-          products.appendChild(container);
-        });
-      },
 
     data () {
       return { components, 
@@ -97,6 +56,12 @@
       }
     },
     methods: {
+        format(amount, currency) {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency,
+        }).format((amount / 100).toFixed(2));
+      },
         async handleSubmit(event) {
         event.preventDefault();
         document
@@ -128,9 +93,43 @@
             .forEach((button) => (button.disabled = false));
           console.error(error);
         }
-      }
+      },
+      async loadProducts() {
+        if (!'content' in document.createElement('template')) {
+          console.error('Your browser doesn’t support HTML template elements.');
+          return;
+        }
+
+        const data = await fetch('/.netlify/functions/get-products')
+          .then((res) => res.json())
+          .catch((err) => console.error(err));
+
+        const products = document.querySelector('.products');
+        const template = document.querySelector('#product');
+
+        data.forEach((product) => {
+          const container = template.content.cloneNode(true);
+
+          container.querySelector('h2').innerText = product.name;
+          container.querySelector('.description').innerText =
+            product.description;
+          container.querySelector('.price').innerText = format(
+            product.amount,
+            product.currency
+          );
+          container.querySelector('[name=sku]').value = product.sku;
+
+          const img = container.querySelector('img');
+          img.src = product.image;
+          img.alt = product.name;
+
+
+          products.appendChild(container);
+        });
+      },
   },
   mounted(){
+    this.loadProducts()
     }
   }
   </script>
