@@ -13,7 +13,7 @@
         <h2>name</h2>
         <p class="description">description</p>
         <p class="price">price</p>
-        <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post">
+        <form action="/.netlify/functions/create-checkout" method="post">
           <label for="quantity">Quantity</label>
           <input
             type="number"
