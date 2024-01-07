@@ -23,7 +23,7 @@
             min="1"
             max="10"
           />
-          <input type="hidden" name="sku" value="DEMO001" />
+          <input type="hidden" name="sku" value="DEMO002" />
           <button type="submit">Buy Now Alper</button>
         </form>
       </div>
