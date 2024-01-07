@@ -1,0 +1,21 @@
+{
+  "id": "main",
+  "label": "Main",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "a100": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}
