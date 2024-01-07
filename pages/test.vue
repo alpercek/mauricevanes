@@ -13,7 +13,7 @@
         <h2>name</h2>
         <p class="description">description</p>
         <p class="price">price</p>
-        <form action="/.netlify/functions/create-checkout" method="post">
+        <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post">
           <label for="quantity">Quantity</label>
           <input
             type="number"
@@ -48,39 +48,6 @@
           style: 'currency',
           currency,
         }).format((amount / 100).toFixed(2));
-      },
-
-      async handleSubmit(event) {
-        event.preventDefault();
-        document
-          .querySelectorAll('button')
-          .forEach((button) => (button.disabled = true));
-
-        const form = new FormData(event.target);
-        const data = {
-          sku: form.get('sku'),
-          quantity: Number(form.get('quantity')),
-        };
-
-        const response = await fetch('/.netlify/functions/create-checkout', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        }).then((res) => res.json());
-
-        const stripe = Stripe(response.publishableKey);
-        const { error } = await stripe.redirectToCheckout({
-          sessionId: response.sessionId,
-        });
-
-        if (error) {
-          document
-            .querySelectorAll('button')
-            .forEach((button) => (button.disabled = false));
-          console.error(error);
-        }
       },
 
       async loadProducts() {
@@ -130,7 +97,38 @@
       }
     },
     methods: {
-  
+        async handleSubmit(event) {
+        event.preventDefault();
+        document
+          .querySelectorAll('button')
+          .forEach((button) => (button.disabled = true));
+
+        const form = new FormData(event.target);
+        const data = {
+          sku: form.get('sku'),
+          quantity: Number(form.get('quantity')),
+        };
+
+        const response = await fetch('/.netlify/functions/create-checkout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }).then((res) => res.json());
+
+        const stripe = Stripe(response.publishableKey);
+        const { error } = await stripe.redirectToCheckout({
+          sessionId: response.sessionId,
+        });
+
+        if (error) {
+          document
+            .querySelectorAll('button')
+            .forEach((button) => (button.disabled = false));
+          console.error(error);
+        }
+      }
   },
   mounted(){
     }
