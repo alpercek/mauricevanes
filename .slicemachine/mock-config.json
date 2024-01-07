@@ -1,49 +1,13 @@
 {
-  "_cts": {
-    "teaser": {},
-    "post": {},
-    "project": {},
-    "about": {},
-    "main": {}
-  },
   "slices": {
-    "A100": {
-      "default": {
-        "primary": {}
-      }
-    },
     "Project": {
       "default": {
         "primary": {}
       }
     },
-    "Image": {
-      "default": {
-        "primary": {}
-      }
-    },
-    "About": {
-      "default": {
-        "primary": {},
-        "items": {}
-      }
-    },
-    "Award": {
-      "default": {
-        "primary": {},
-        "items": {}
-      }
-    },
-    "Text": {},
-    "Contact": {
-      "default": {
-        "primary": {}
-      }
-    },
-    "Contact2": {
-      "default": {
-        "primary": {}
-      }
-    }
+    "ContactInfo": {}
+  },
+  "_cts": {
+    "page": {}
   }
 }

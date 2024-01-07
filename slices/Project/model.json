@@ -11,44 +11,63 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "Project",
       "primary": {
-        "title": {
+        "namedateyear": {
           "type": "StructuredText",
           "config": {
-            "single": "heading1",
-            "label": "Title",
-            "placeholder": "This is where it all begins..."
-          }
-        },
-        "date": {
-          "type": "Timestamp",
-          "config": {
-            "label": "date",
-            "placeholder": ""
-          }
-        },
-        "description": {
-          "type": "StructuredText",
-          "config": {
-            "label": "description",
+            "label": "title and year",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
-        }
-      },
-      "items": {
-        "heroimage": {
-          "type": "Image",
+        },
+        "title": {
+          "type": "StructuredText",
           "config": {
-            "label": "heroimage",
-            "constraint": {},
-            "thumbnails": []
+            "label": "title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
         "description": {
           "type": "StructuredText",
           "config": {
-            "label": "description",
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "color": {
+          "type": "Color",
+          "config": {
+            "label": "color",
+            "placeholder": ""
+          }
+        },
+        "open": {
+          "type": "Boolean",
+          "config": {
+            "label": "open",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "fig": {
+          "type": "StructuredText",
+          "config": {
+            "label": "fig",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"

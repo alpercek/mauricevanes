@@ -1,0 +1,80 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Nisi anim eiusmod proident duis ipsum minim. Quis mollit id laboris adipisicing velit in magna sunt irure. Est sit est id aute aliqua sunt eiusmod minim mollit excepteur deserunt."
+            }
+          }
+        ]
+      },
+      "email": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Labore culpa laborum culpa ut ut sit occaecat dolore reprehenderit aliquip labore tempor proident fugiat tempor. Aliqua sunt elit enim voluptate magna deserunt minim ad dolor reprehenderit ipsum. Dolor nisi amet incididunt aliqua."
+            }
+          }
+        ]
+      },
+      "base": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Mollit aliquip dolor laboris occaecat et laboris culpa deserunt aliqua laborum ex sunt amet consectetur voluptate. Cillum occaecat ut veniam magna sunt qui exercitation cupidatat tempor ea sit aliquip nulla in. Quis exercitation adipisicing occaecat."
+            }
+          }
+        ]
+      },
+      "instagram": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Enim minim nostrud anim veniam consequat fugiat aliqua eiusmod reprehenderit veniam in ex adipisicing. Cupidatat dolor non eu nulla Lorem non enim aliqua duis qui non duis est culpa. Et enim aliquip aute commodo occaecat fugiat adipisicing sint veniam tempor."
+            }
+          }
+        ]
+      },
+      "website": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Mollit amet laboris amet deserunt commodo ullamco consequat voluptate qui amet. Sit veniam adipisicing ea exercitation ea."
+            }
+          }
+        ]
+      },
+      "personalinstagram": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Adipisicing pariatur minim incididunt reprehenderit quis eiusmod qui sint ut do eu quis est nisi."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

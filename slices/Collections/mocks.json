@@ -1,0 +1,28 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {},
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "text",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Et nostrud ut ex. Excepteur velit enim cillum sit amet laborum voluptate tempor reprehenderit sint laboris qui. Dolore cillum sunt sunt enim incididunt nostrud consequat consectetur aute sunt Lorem deserunt amet cupidatat elit."
+                  }
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

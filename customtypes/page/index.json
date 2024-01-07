@@ -1,0 +1,74 @@
+{
+  "id": "page",
+  "label": "Page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1"
+        }
+      },
+      "parent": {
+        "type": "Link",
+        "config": {
+          "label": "Parent",
+          "select": "document",
+          "customtypes": [
+            "page"
+          ]
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "main_image": {
+              "type": "SharedSlice"
+            },
+            "project": {
+              "type": "SharedSlice"
+            },
+            "about_image": {
+              "type": "SharedSlice"
+            },
+            "about_info": {
+              "type": "SharedSlice"
+            },
+            "enlarged_slider": {
+              "type": "SharedSlice"
+            },
+            "education": {
+              "type": "SharedSlice"
+            },
+            "collections": {
+              "type": "SharedSlice"
+            },
+            "bibliography": {
+              "type": "SharedSlice"
+            },
+            "exhibitions": {
+              "type": "SharedSlice"
+            },
+            "about_text": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

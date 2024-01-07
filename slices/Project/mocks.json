@@ -7,17 +7,12 @@
         "__TYPE__": "StructuredTextContent",
         "value": [
           {
-            "type": "heading1",
+            "type": "paragraph",
             "content": {
-              "text": "Funny"
+              "text": "Consectetur nostrud laboris aliqua eiusmod."
             }
           }
         ]
-      },
-      "date": {
-        "__TYPE__": "FieldContent",
-        "type": "Timestamp",
-        "value": "2013-09-29T21:35:06Z"
       },
       "description": {
         "__TYPE__": "StructuredTextContent",
@@ -25,10 +20,30 @@
           {
             "type": "paragraph",
             "content": {
-              "text": "Labore adipisicing mollit enim. Do ut proident elit ea sit eu sint eiusmod Lorem do ad pariatur."
+              "text": "Adipisicing cillum pariatur nulla sit dolore reprehenderit consequat duis deserunt aute. Tempor ullamco excepteur consequat sint quis commodo exercitation pariatur dolore dolore nostrud fugiat quis. Quis dolore aute culpa nulla sit et eu ea velit."
             }
           }
         ]
+      },
+      "namedateyear": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Dolore exercitation sit sunt minim amet Lorem amet aliqua amet. Anim exercitation enim velit nostrud fugiat adipisicing sunt. Non deserunt est ullamco quis nisi dolore commodo reprehenderit excepteur proident nostrud consequat."
+            }
+          }
+        ]
+      },
+      "color": {
+        "__TYPE__": "FieldContent",
+        "value": "#0461b5",
+        "type": "Color"
+      },
+      "open": {
+        "__TYPE__": "BooleanContent",
+        "value": false
       }
     },
     "items": [
@@ -36,17 +51,17 @@
         "__TYPE__": "GroupItemContent",
         "value": [
           [
-            "heroimage",
+            "image",
             {
               "origin": {
                 "id": "main",
-                "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
-                "width": 5616,
-                "height": 3744
+                "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab",
+                "width": 12288,
+                "height": 16384
               },
-              "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
-              "width": 5616,
-              "height": 3744,
+              "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab",
+              "width": 12288,
+              "height": 16384,
               "edit": {
                 "zoom": 1,
                 "crop": {
@@ -62,14 +77,14 @@
             }
           ],
           [
-            "description",
+            "fig",
             {
               "__TYPE__": "StructuredTextContent",
               "value": [
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Dolor adipisicing magna pariatur ut do ex ex proident consectetur reprehenderit aliqua et."
+                    "text": "Voluptate duis sit id magna sunt duis minim ea eiusmod deserunt. Mollit consequat aliquip qui in nostrud et fugiat amet eu ad tempor sint duis minim."
                   }
                 }
               ]

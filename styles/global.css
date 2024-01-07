@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: "METRIK";
+  src: url("../styles/Metrik.otf");
+}
+@font-face {
+  font-family: "CIRCULAR";
+  src: url("../styles/Circular.otf");
+}
+@font-face {
+  font-family: "METRIKBOLD";
+  src: url("../styles/MetrikBold.otf");
+}
+@font-face {
+  font-family: "CIRCULARBOLD";
+  src: url("../styles/CircularBold.otf");
+}
+@font-face {
+  font-family: "METRIKMID";
+  src: url("../styles/MetrikMedium.otf");
+}
+
+
+[data-collapsible="true"].bg-white + [data-collapsible="true"].bg-white {
+  @apply pt-0 md:pt-0;
+}
+
+
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: white;
+}
+body{
+  background-color: white;
+
+}
+
+.kaykay::-webkit-scrollbar {
+  display: none;
+}
+
+.kaykay  {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.Toolbar{
+  display: none !important;
+}
+.nuxt-link-exact-active{
+  text-decoration: underline;
+}

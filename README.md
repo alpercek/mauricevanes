@@ -1,69 +1,65 @@
-# pip
+# ALPer
 
-## Build Setup
+Want to see an example of a multi-page website using [Prismic][prismic] and [Nuxt][nuxt]? Look no further! This project provides all the code you need for a personal website with a homepage, information pages, and navigation.
 
-```bash
-# install dependencies
-$ npm install
+- **Demo**: [Open live demo][live-demo]
+- **Learn more about Prismic and Nuxt**: [Prismic Nuxt Documentation][prismic-docs]
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+&nbsp;
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+<img src="https://user-images.githubusercontent.com/8601064/166617932-eaaa1643-f086-4909-9868-56234f8da98d.png" alt="Screenshots of the site seen on deskop and mobile browsers" />
 
-# generate static project
-$ npm run generate
+&nbsp;
+
+## 🚀 Quick Start
+
+To start a new project using this starter, run the following commands in your terminal:
+
+```sh
+npx degit prismicio-community/nuxt-starter-prismic-multi-page your-project-name
+cd your-project-name
+npx @slicemachine/init
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+The commands will do the following:
 
-## Special Directories
+1. Start a new Next.js project using this starter.
+2. Ask you to log in to Prismic or [create an account][prismic-sign-up].
+3. Create a new Prismic content repository with sample content.
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+When you're ready to start your project, run the following command:
 
-### `assets`
+```sh
+npm run dev
+```
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+## Documentation
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+To learn how to work with your new project, [**see this starter's docs**][starter-docs].
 
-### `components`
+To learn more about working with Prismic, [**see the Prismic docs**][prismic-docs].
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+## License
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+```
+Copyright 2013-2022 Prismic <contact@prismic.io> (https://prismic.io)
 
-### `layouts`
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+    http://www.apache.org/licenses/LICENSE-2.0
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+[prismic]: https://prismic.io/
+[prismic-docs]: https://prismic.io/docs/technologies/nuxt
+[prismic-sign-up]: https://prismic.io/dashboard/signup
+[starter-docs]: ./docs/README.md
+[nuxt]: https://nuxtjs.org/
+[live-demo]: https://nuxt-starter-prismic-multi-page.vercel.app/
