@@ -34,7 +34,7 @@
   <script>
   import { doc } from 'prettier'
   import { components } from '~/slices'
-  import { Stripe } from 'stripe'
+  import {loadStripe} from '@stripe/stripe-js'
   
   export default {
     async asyncData ({ $prismic, store }) {
@@ -82,7 +82,7 @@
           body: JSON.stringify(data),
         }).then((res) => res.json());
 
-        const stripe = Stripe(response.publishableKey);
+        const stripe = loadStripe(response.publishableKey);
         const { error } = await stripe.redirectToCheckout({
           sessionId: response.sessionId,
         });
