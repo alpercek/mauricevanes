@@ -51,8 +51,7 @@
     },
     head () {
       return {
-        title: this.$prismic.asText(this.page.data.title),
-        script : 'https://js.stripe.com/v3'
+        title: this.$prismic.asText(this.page.data.title)
       }
     },
     methods: {

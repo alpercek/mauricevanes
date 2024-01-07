@@ -7,6 +7,9 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Pip Passchier',
+    script: [
+      { src: 'https://js.stripe.com/v3' },
+    ],
     htmlAttrs: {
       lang: 'en'
     },
