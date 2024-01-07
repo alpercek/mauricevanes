@@ -34,7 +34,6 @@
   <script>
   import { doc } from 'prettier'
   import { components } from '~/slices'
-  import {loadStripe} from '@stripe/stripe-js'
   
   export default {
     async asyncData ({ $prismic, store }) {
@@ -56,13 +55,20 @@
       }
     },
     methods: {
-        format(amount, currency) {
+  },
+  mounted(){
+    let Stripescript = document.createElement('script')
+      Stripescript.setAttribute('src', 'https://js.stripe.com/v3/')
+      document.head.appendChild(Stripescript)
+
+      function format(amount, currency) {
         return new Intl.NumberFormat('en-US', {
           style: 'currency',
           currency,
         }).format((amount / 100).toFixed(2));
-      },
-        async handleSubmit(event) {
+      }
+
+      async function handleSubmit(event) {
         event.preventDefault();
         document
           .querySelectorAll('button')
@@ -82,7 +88,7 @@
           body: JSON.stringify(data),
         }).then((res) => res.json());
 
-        const stripe = loadStripe(response.publishableKey);
+        const stripe = Stripe(response.publishableKey);
         const { error } = await stripe.redirectToCheckout({
           sessionId: response.sessionId,
         });
@@ -93,8 +99,9 @@
             .forEach((button) => (button.disabled = false));
           console.error(error);
         }
-      },
-      async loadProducts() {
+      }
+
+      async function loadProducts() {
         if (!'content' in document.createElement('template')) {
           console.error('Your browser doesn’t support HTML template elements.');
           return;
@@ -123,13 +130,14 @@
           img.src = product.image;
           img.alt = product.name;
 
+          const form = container.querySelector('form');
+          form.addEventListener('submit', handleSubmit);
 
           products.appendChild(container);
         });
-      },
-  },
-  mounted(){
-    this.loadProducts()
+      }
+
+      loadProducts();
     }
   }
   </script>
