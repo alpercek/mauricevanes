@@ -69,7 +69,7 @@
 
         const form = new FormData(event.target);
         const data = {
-          sku: form.get('sku'),
+          sku: ['DEMO001', 'DEMO002'],
           quantity: Number(form.get('quantity')),
         };
 
@@ -92,39 +92,6 @@
             .forEach((button) => (button.disabled = false));
           console.error(error);
         }
-      },
-      async loadProducts() {
-        if (!'content' in document.createElement('template')) {
-          console.error('Your browser doesn’t support HTML template elements.');
-          return;
-        }
-
-        const data = await fetch('/.netlify/functions/get-products')
-          .then((res) => res.json())
-          .catch((err) => console.error(err));
-
-        const products = document.querySelector('.products');
-        const template = document.querySelector('#product');
-
-        data.forEach((product) => {
-          const container = template.content.cloneNode(true);
-
-          container.querySelector('h2').innerText = product.name;
-          container.querySelector('.description').innerText =
-            product.description;
-          container.querySelector('.price').innerText = format(
-            product.amount,
-            product.currency
-          );
-          container.querySelector('[name=sku]').value = product.sku;
-
-          const img = container.querySelector('img');
-          img.src = product.image;
-          img.alt = product.name;
-
-
-          products.appendChild(container);
-        });
       },
   },
   mounted(){
