@@ -68,10 +68,10 @@
           .forEach((button) => (button.disabled = true));
 
         const form = new FormData(event.target);
-        const data = {
-          sku: ['DEMO001', 'DEMO002'],
+        const data = [{
+          sku: form.get('sku'),
           quantity: Number(form.get('quantity')),
-        };
+        }, {sku: 'DEMO001', quantity: '2' }];
 
         const response = await fetch('/.netlify/functions/create-checkout', {
           method: 'POST',
