@@ -1,100 +1,100 @@
 <template>
-  <div>
-    <div id="se" class="hidden fixed top-0 inset-0 pt-10 pb-12 bg-white !z-50"><div id="cb" class="cursor-pointer text-gray-400 !z-40 absolute top-4 left-1/2 -translate-x-1/2">&#x2715</div>
-  <div class="h-[calc(100vh-5.5rem)] w-full">
-    <div class="!relative !grid items-center gap-1">
-      <div  class="flex w-full justify-center"><img id="itr" src="" class="h-[calc(100vh-5.5rem)] object-scale-down"></div>
+    <div>
+      <main>
+      <section class="products"></section>
+    </main>
+
+    <footer>
+    </footer>
+
+    <template id="product">
+      <div class="product">
+        <img src="" alt="" />
+        <h2>name</h2>
+        <p class="description">description</p>
+        <p class="price">price</p>
+        <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post">
+          <label for="quantity">Quantity</label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            value="1"
+            min="1"
+            max="10"
+          />
+          <input type="hidden" name="sku" value="DEMO002" />
+          <button type="submit">Buy Now Alper</button>
+        </form>
+      </div>
+    </template>
     </div>
-    <div id="tt" class="!no-underline text-center text-xs font-metrik max-w-sm absolute left-1/2 -translate-x-1/2"></div>
-    <div id="misss" class="absolute inline-0 z-20 h-full w-full top-0 cursor-zoom-in"></div>
-  </div>
-  <div @click="sakla" id="fff" class="overflow-scroll hidden h-screen w-screen inset-0 fixed z-50 cursor-crosshair kaykay bg-white"><img id="itrr" class="w-[200%] z-60 !max-w-none"/></div>
-  </div>
+  </template>
+  
+  <script>
+  import { components } from '~/slices'
+  
+  export default {
+    async asyncData ({ $prismic, store }) {
+      const page = await $prismic.api.getByUID('page', 'home')
+      await store.dispatch('prismic/load')
+      return {
+        page
+      }
+    },
 
-
-
-    <SliceZone :slices="page.data.slices" :components="components" /><button id="topitop" class="fixed duration-1000 bottom-28 md:bottom-1/3 right-0 transition-all opacity-0" @click="toTop()">&#8593;</button></div>
-</template>
-
-<script>
-import { doc } from 'prettier'
-import { components } from '~/slices'
-
-export default {
-  async asyncData ({ $prismic, store }) {
-    const page = await $prismic.api.getByUID('page', 'home')
-    await store.dispatch('prismic/load')
-    return {
-      page
-    }
-  },
-  data () {
-    return { components, 
-    }
-    
-  },
-  head () {
-    return {
-      title: this.$prismic.asText(this.page.data.title)
-    }
-  },
-  methods: { 
-  toTop() {
-    window.scrollTo({
-  top: 0,
-  left: 0,
-  behavior: "smooth",
-});
-  },
-  sakla(){
-        event.target.parentElement.style.display = "none"
+    data () {
+      return { components, 
+      }
+      
+    },
+    head () {
+      return {
+        title: this.$prismic.asText(this.page.data.title)
+      }
+    },
+    methods: {
+        format(amount, currency) {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency,
+        }).format((amount / 100).toFixed(2));
       },
+        async handleSubmit(event) {
+        event.preventDefault();
+        document
+          .querySelectorAll('button')
+          .forEach((button) => (button.disabled = true));
 
-},
-mounted(){
-  
-      var lastScrollTop = 0;
-      let set = document.getElementsByClassName("set")
-      let sat = document.getElementById("se")
-      let imt = document.getElementById("itr")
-      let imtt = document.getElementById("itrr")
-      let tt = document.getElementById("tt")
-document.getElementById("cb").addEventListener("click", function(){sat.style.display = "none"})
+        const form = new FormData(event.target);
+        const data = {
+          sku: form.get('sku'),
+          quantity: Number(form.get('quantity')),
+        };
 
-document.getElementById("fff").addEventListener('mousemove', function(){
-      document.getElementById("fff").scrollTo({
-  top: `${event.y}`/(window.innerHeight*2)*10000,
-  left: `${event.x}`/(window.innerWidth*2)*10000,
-});
-    });
+        const response = await fetch('/.netlify/functions/create-checkout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }).then((res) => res.json());
 
-    document.getElementById("misss").addEventListener("click", function(){
-    document.getElementById("fff").style.display = "block"
-  
-  },false);
+        const stripe = Stripe(response.publishableKey);
+        const { error } = await stripe.redirectToCheckout({
+          sessionId: response.sessionId,
+        });
 
-
-
-document.addEventListener("scroll", function(){ 
-   var st = window.pageYOffset || document.documentElement.scrollTop; 
-   if (st > lastScrollTop) {
-    document.getElementById("topitop").style.opacity = 0
-   } else if (st < lastScrollTop) {
-    document.getElementById("topitop").style.opacity = 1
-   }
-   lastScrollTop = st <= 0 ? 0 : st;
-
-}, false);
-  for (let index = 0; index < set.length; index++) {
-    set[index].addEventListener("click", function enlarge(){
-    imt.src = event.currentTarget.src
-    imtt.src = event.currentTarget.src
-    sat.style.display = "block"
-    tt.innerHTML = event.currentTarget.parentElement.parentElement.lastChild.innerHTML
-    console.log(event.currentTarget.parentElement.parentElement.lastChild.innerHTML)
-    })
+        if (error) {
+          document
+            .querySelectorAll('button')
+            .forEach((button) => (button.disabled = false));
+          console.error(error);
+        }
+      },
+  },
+  mounted(){
+    }
   }
+  </script>
   
-  }
-}
-</script>

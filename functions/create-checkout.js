@@ -45,7 +45,7 @@ exports.handler = async (event) => {
     line_items: [
       {
         price_data: {
-          currency: 'usd',
+          currency: 'eur',
           unit_amount: product.amount,
           product_data: {
             name: product.name,
