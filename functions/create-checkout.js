@@ -21,6 +21,7 @@ const inventory = require('./data/products.json');
 
 exports.handler = async (event) => {
   const { sku, quantity } = JSON.parse(event.body);
+  const product = inventory.find((p) => p.sku === sku);
 
   // ensure that the quantity is within the allowed range
   const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
@@ -41,9 +42,8 @@ exports.handler = async (event) => {
      */
     success_url: `${process.env.URL}/success.html`,
     cancel_url: process.env.URL,
-    line_items: req.body.items.map(item => {
-      const product = inventory.get(item.sku)
-      return {
+    line_items: [
+      {
         price_data: {
           currency: 'eur',
           unit_amount: product.amount,
@@ -54,8 +54,8 @@ exports.handler = async (event) => {
           },
         },
         quantity: validatedQuantity,
-      }
-    }),
+      },
+    ],
     // We are using the metadata to track which items were purchased.
     // We can access this meatadata in our webhook handler to then handle
     // the fulfillment process.
