@@ -18,10 +18,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
  * so you know the pricing information is accurate.
  */
 const inventory = require('./data/products.json');
-const storeItems = new Map([
-  [1, { priceInCents: 10000, name: "Learn React Today" }],
-  [2, { priceInCents: 20000, name: "Learn CSS Today" }],
-])
 
 exports.handler = async (event) => {
   const { sku, quantity } = JSON.parse(event.body);
@@ -46,19 +42,32 @@ exports.handler = async (event) => {
      */
     success_url: `${process.env.URL}/success.html`,
     cancel_url: process.env.URL,
-    line_items: req.body.items.map(item => {
-      const storeItem = storeItems.get(item.id)
-      return {
+    line_items: [
+      {
         price_data: {
-          currency: "eur",
+          currency: 'eur',
+          unit_amount: product.amount,
           product_data: {
-            name: storeItem.name,
+            name: product.name,
+            description: product.description,
+            images: [product.image],
           },
-          unit_amount: storeItem.priceInCents,
         },
-        quantity: item.quantity,
-      }
-    }),
+        quantity: validatedQuantity,
+      },
+      {
+        price_data: {
+          currency: 'eur',
+          unit_amount: product.amount,
+          product_data: {
+            name: product.name,
+            description: product.description,
+            images: [product.image],
+          },
+        },
+        quantity: validatedQuantity,
+      },
+    ],
     // We are using the metadata to track which items were purchased.
     // We can access this meatadata in our webhook handler to then handle
     // the fulfillment process.
