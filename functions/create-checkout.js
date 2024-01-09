@@ -23,6 +23,33 @@ exports.handler = async (event) => {
   const { sku, quantity } = JSON.parse(event.body);
   const product = inventory.find((p) => p.sku === sku);
 
+  const lineritems = [
+    {
+      price_data: {
+        currency: 'eur',
+        unit_amount: product.amount,
+        product_data: {
+          name: product.name,
+          description: product.description,
+          images: [product.image],
+        },
+      },
+      quantity: validatedQuantity,
+    },
+    {
+      price_data: {
+        currency: 'eur',
+        unit_amount: 999,
+        product_data: {
+          name: 'alper',
+          description: 'product.description',
+          images: [product.image],
+        },
+      },
+      quantity: validatedQuantity,
+    },
+  ]
+
   // ensure that the quantity is within the allowed range
   const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
 
@@ -42,32 +69,7 @@ exports.handler = async (event) => {
      */
     success_url: `${process.env.URL}/success.html`,
     cancel_url: process.env.URL,
-    line_items: [
-      {
-        price_data: {
-          currency: 'eur',
-          unit_amount: product.amount,
-          product_data: {
-            name: product.name,
-            description: product.description,
-            images: [product.image],
-          },
-        },
-        quantity: validatedQuantity,
-      },
-      {
-        price_data: {
-          currency: 'eur',
-          unit_amount: 999,
-          product_data: {
-            name: 'alper',
-            description: 'product.description',
-            images: [product.image],
-          },
-        },
-        quantity: validatedQuantity,
-      },
-    ],
+    line_items: lineritems,
     // We are using the metadata to track which items were purchased.
     // We can access this meatadata in our webhook handler to then handle
     // the fulfillment process.
